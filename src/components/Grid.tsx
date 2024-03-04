@@ -1,4 +1,5 @@
-import { LazyLoadImage } from "react-lazy-load-image-component"
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import {Link} from 'react-router-dom';
 export type Props = {
 	id?:number,
 	title?:string,
@@ -15,29 +16,34 @@ function Grid (GridProps:any){
 			<div className="movie grid">
 				{
 					movieList.map((movie:any) => (
-						<div className="item" key={movie.id}>
-							<div className="fade-in-image">
-								<LazyLoadImage
-									src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-								/>
-							</div>
-							<h4 className="title">{movie.title}</h4>
-							<div className="caption open-left">
-								<div className="inner">
-									<h4>{movie.title}</h4>
-									<div className="desc">
-										<p>
-											<span>Release:</span>
-											{movie.release_date}
-										</p>
-										<p>
-											<span>Language:</span>
-											{movie.original_language}
-										</p>
+						<Link to={`/details/${movie.id}`} key={movie.id}>
+							<div className="item" >
+								<div className="fade-in-image">
+									{movie.poster_path === null ? <LazyLoadImage
+										src={`https://picsum.photos/seed/picsum/200/300`}
+									/>: <LazyLoadImage
+										src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+									/>}
+								</div>
+								<h4 className="title">{movie.title}</h4>
+								<div className="caption open-left">
+									<div className="inner">
+										<h4>{movie.title}</h4>
+										<div className="desc">
+											<p>
+												<span>Release:</span>
+												{movie.release_date}
+											</p>
+											<p>
+												<span>Language:</span>
+												{movie.original_language}
+											</p>
+										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						</Link>
+
 					))
 				}
 		  </div>

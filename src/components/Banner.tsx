@@ -7,13 +7,12 @@ export type Props = {
 }
 export type BannerProps = {
   bannerList ?: Props[],
+  onSubmit: Function,
 }
 function Banner (BannerProps:any){
-  const [dataSearch, setDataSearch] = useState<string>();
   const bannerList = BannerProps.bannerList;
   const handleSearch = (data:string) =>{
-    setDataSearch(data);
-    console.log("data",data);
+    BannerProps.onSubmit(data);
   }
   return (
     <div className="banner">
@@ -24,7 +23,7 @@ function Banner (BannerProps:any){
       </div>
       <div className="search">
         <h1>{bannerList.title}</h1>
-        <input onKeyPress={(e:any)=>handleSearch(e.target.value)} className="input" placeholder="Search for a movie ..." />
+        <input type="text" onChange={(e:any)=>handleSearch(e.target.value)} className="input" placeholder="Search for a movie ..." />
       </div>
     </div>
   )

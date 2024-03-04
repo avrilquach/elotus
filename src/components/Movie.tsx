@@ -29,17 +29,26 @@ function Movie (){
   }
   const getTopRated  = () =>{
     setIsLoading(true);
-    const sorted = movieList.sort((a:any, b:any) => (b.vote_average > a.vote_average) ? 1 : -1);
+    const sortData = movieList.sort((a:any, b:any) => (b.vote_average > a.vote_average) ? 1 : -1);
     timeOut();
-    setMovieList(sorted);
+    setMovieList(sortData);
     setActiveId(2);
   }
   useEffect(() => {
-		getNowPlaying()
+		getNowPlaying();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  const handleSearch = (data:string) =>{
+    if(data){
+      const searchData = movieList.filter((item:any) => item.title.toLowerCase().indexOf(data.toLowerCase()) !== -1);
+      setMovieList(searchData);
+    }else{
+      getNowPlaying();
+    }
+  }
 	return (
 		<div className="container">
-      {movieList && <Banner bannerList={bannerList}/>}
+      {movieList && <Banner onSubmit={handleSearch} bannerList={bannerList}/>}
 			<h2 className="title-heading">
 				<span className={activeId === 1 ? 'title active': "title"} onClick={()=>getNowPlaying()}>Now Playing </span>/
 				<span className={activeId === 2 ? 'title active': "title"} onClick={()=>getTopRated()}> Top Rated</span>

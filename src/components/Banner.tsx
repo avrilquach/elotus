@@ -1,4 +1,3 @@
-import React, {useState } from 'react'
 import {LazyLoadImage} from "react-lazy-load-image-component";
 export type Props = {
   id?:number,

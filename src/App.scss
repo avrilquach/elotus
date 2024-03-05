@@ -94,8 +94,22 @@ a{
     .item{
       display: flex;
       margin-bottom: 30px;
+      position: relative;
       .fade-in-image{
         width: 170px;
+      }
+      .vote{
+        background: #fe7900;
+        color: white;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
       }
       .content{
         margin-left: 30px;
@@ -108,17 +122,6 @@ a{
           display: flex;
           align-items: center;
           justify-content: space-between;
-          .vote{
-            background: #fe7900;
-            color: white;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-            border-radius: 50%;
-          }
         }
         .overview{
           display: -webkit-box;
@@ -232,7 +235,6 @@ a{
     width: 100%;
   }
   .search{
-    top: 50%;
     bottom: 0;
     margin: auto;
     position: absolute;
@@ -355,13 +357,9 @@ a{
 .detail{
   display: flex;
   .thumb{
-    width: 400px;
-    img{
-      max-width: fit-content;
-    }
+    margin-bottom: 30px;
   }
   .content{
-    margin-left: 30px;
     h1{
       margin-bottom: 10px;
       font-size: 30px;
@@ -385,7 +383,24 @@ a{
 }
 /* End Layout */
 /* Start Reponsive */
+@media (max-width: 767px) {
+  .detail{
+    flex-wrap: wrap;
+  }
+}
 @media (min-width: 768px) {
+  .detail
+  {
+    .content{
+      margin-left: 30px;
+    }
+    .thumb{
+      width: 400px;
+      img{
+        max-width: fit-content;
+      }
+    }
+  }
   .movie{
     &.list{
       .item{

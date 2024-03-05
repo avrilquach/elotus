@@ -21,7 +21,6 @@ function Banner (BannerProps:any){
         />
       </div>
       <div className="search">
-        <h1>{banner.title}</h1>
         <input type="text" onChange={(e:any)=>handleSearch(e.target.value)} className="input" placeholder="Search for a movie ..." />
       </div>
     </div>

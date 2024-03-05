@@ -27,10 +27,10 @@ function List (ListProps:any){
 									src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
 								/>}
 							</div>
+							<div className="vote">{movie.vote_average.toFixed(1)}</div>
 							<div className="content">
 								<h4>
 									{movie.title}
-									<div className="vote">{movie.vote_average.toFixed(1)}</div>
 								</h4>
 								<p className="overview">{movie.overview}</p>
 								<div className="desc">
